@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  mlflow:
+    image: mlflow-image # mlflow 경량 이미지
+    container_name: mlflow_container
+    environment:
+      - MLFLOW_TRACKING_URI=file:///home/jovyan/work/mlruns  # MLflow tracking URI 설정
+    ports:
+      - "15555:5000"                  # 호스트의 15555 포트를 컨테이너의 5000 포트로 매핑합니다
+    volumes:
+      - ./mlruns:/home/jovyan/work/mlruns              # mlruns 데이터가 저장될 호스트 디렉토리와 매핑
+    working_dir: /home/jovyan/work
+    command: >
+      sh -c "pip install mlflow && mlflow ui --host 0.0.0.0 --port 5000"  # MLflow 설치 후 UI 실행합니다
+
+  train:
+    image: recommender-image-test
+    container_name: training-${PLACE_NAME}-${EXP_NAME}
+    user: root
+    environment:
+      - GRANT_SUDO=yes
+      - PHASE=local_prod
+      - PYTHONPATH=/home/jovyan/work/:$PYTHONPATH
+      - MLFLOW_TRACKING_URI=file:///home/jovyan/work/mlruns
+      - EXP_NAME=$EXP_NAME
+      - PLACE_NAME=$PLACE_NAME
+    volumes:
+      - ~/.aws:/home/jovyan/.aws
+      - .:/home/jovyan/work
+      - /data:/data
+      - ./mlruns:/home/jovyan/work/mlruns
+      - ./recommender:/home/jovyan/work/recommender
+      - ./common:/home/jovyan/work/common
+    shm_size: 200gb
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    command: >
+      /bin/bash -c "python /home/jovyan/work/recommender/${PLACE_NAME}/${EXP_NAME}/${EXP_NAME}.py"

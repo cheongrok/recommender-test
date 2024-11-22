@@ -1,0 +1,20 @@
+[aws]
+aws_credentials_provider = "com.amazonaws.auth.profile.ProfileCredentialsProvider"
+default_region = "ap-northeast-2"
+aws_profile = "dev-ai-data-team"
+
+[aws.secrets_manager_name]
+clickhouse = "dev-bigdata/clickhouse"
+gcp_credential = "dev/gcp/credential"
+
+[aws.s3]
+data_bucket = "dev-data-grip-aibigdata-ap-northeast-2"
+output_bucket = "dev-output-grip-aibigdata-ap-northeast-2"
+log_bucket = "dev-logs-grip-aibigdata-ap-northeast-2"
+legacy_data_bucket = "grip-bigdata-dev-data-ap-northeast-2"
+legacy_output_bucket = "grip-bigdata-dev-output-ap-northeast-2"
+
+[gcp]
+project_id = "grip-dev-a736b"
+analytics_dataset_id = "analytics_191186612"
+default_region = "asia-northeast3"
