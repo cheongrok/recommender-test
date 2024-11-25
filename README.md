@@ -23,7 +23,7 @@ docker compose up -d mlflow
 
 ### train
 recommender-test/recommender/{PLACE_NAME}/{EXP_NAME} 경로에서 train.sh를 실행합니다.   
- 실험은 섹션별 실험별로 폴더단위로 관리하고, 실험 폴더 내부에 config.py 파일로파라미터를 조정할 수 있습니다. PLACE_NAME은 고정된 섹션명으로 사용하고, EXP_NAME의 경우는 모델의 피처나 하이퍼파라미터의 특징으로 자유롭게 정해서 사용합니다.
+ 실험은 섹션별 실험별로 폴더단위로 관리하고, 실험 폴더 내부에 config.py 파일로 파라미터를 조정할 수 있습니다. PLACE_NAME은 고정된 섹션명으로 사용하고, EXP_NAME의 경우는 모델의 피처나 하이퍼파라미터의 특징으로 자유롭게 정해서 사용합니다.
 - EXP_NAME: 실험명 
 - PLACE_NAME: 섹션명
 ```bash
@@ -31,7 +31,7 @@ cd recommender-test/recommender/{PLACE_NAME}/{EXP_NAME}
 ./train.sh -e {EXP_NAME} -p {PLACE_NAME}
 ```
 
-### serve(진행중)
+### serve(진행중)
 가장 성능이 좋은 모델로 추천 결과를 생성하여 전달합니다.
 ```bash
 docker compose up -d {serving_container}
