@@ -268,7 +268,10 @@ def train_model(train_loader, test_loader):
             if test_loss < best_test_loss:
                 best_test_loss = test_loss
                 best_model = model
-        mlflow.pytorch.log_model(best_model, "best_model")
+        mlflow.pytorch.log_model(
+                pytorch_model=best_model,
+                artifact_path=f"{config.MLFLOW_PATH}/mlruns/models",
+                registered_model_name="best_model")
     
     return best_model
 
