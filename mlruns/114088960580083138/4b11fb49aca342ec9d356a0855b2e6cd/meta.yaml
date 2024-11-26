@@ -1,0 +1,15 @@
+artifact_uri: file:///home/jovyan/work/mlruns/114088960580083138/4b11fb49aca342ec9d356a0855b2e6cd/artifacts
+end_time: 1732501788191
+entry_point_name: ''
+experiment_id: '114088960580083138'
+lifecycle_stage: active
+run_id: 4b11fb49aca342ec9d356a0855b2e6cd
+run_name: NCF_2024-11-25 11:29:41
+run_uuid: 4b11fb49aca342ec9d356a0855b2e6cd
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1732501781845
+status: 3
+tags: []
+user_id: root

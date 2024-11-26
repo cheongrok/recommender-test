@@ -1,0 +1,15 @@
+artifact_uri: file:///home/jovyan/work/mlruns/633984049566377248/c293b74c83ba420eb74fefa80cc25230/artifacts
+end_time: 1732269495014
+entry_point_name: ''
+experiment_id: '633984049566377248'
+lifecycle_stage: active
+run_id: c293b74c83ba420eb74fefa80cc25230
+run_name: NCF_gripper_follow_2024-11-22 18:58:08
+run_uuid: c293b74c83ba420eb74fefa80cc25230
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1732269489020
+status: 3
+tags: []
+user_id: root
